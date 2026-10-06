@@ -1,0 +1,48 @@
+:root {
+  --cols: 6;
+  --rows: 12;
+  --bg: #ffffff;
+  --off: #e4e4e4;
+  --on: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.grid {
+  /* largest square that lets the whole grid fit on screen */
+  --size: min(calc(100vw / var(--cols)), calc(100dvh / var(--rows)));
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--size));
+  grid-auto-rows: var(--size);
+}
+
+.cell {
+  background: var(--off);
+  border: 1px solid var(--bg);
+}
+
+.cell.on {
+  background: var(--on);
+}
